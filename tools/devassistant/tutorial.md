@@ -12,9 +12,9 @@ look a little different than those for Perl.
 
 ## The Basics
 
-To launch DevAssistant, either run the `da` (or `da-gui`) binaries, or find
-DevAssistant in your Applications menu. In these tutorials, we will use the
-command-line `da` binary, but the usage of the GUI is very much the same.
+To launch DevAssistant, either run the `da` (or `da-gui` for the GUI) binaries,
+or find DevAssistant in your Applications menu. In these tutorials, we will use
+the command-line `da` binary, but the usage of the GUI is very much the same.
 However, at the moment, we discourage using the GUI for these reasons.
 
 If you are unsure what assistant to run, you can use the `--help` or `-h` flag,
@@ -41,7 +41,7 @@ at any time to see what assistants and options are available:
     pkg      Lets you interact with online DAPI service and your local DAP packages.
     version  Print version
 
-To find more about creating projects, you can run:
+To find more about creating projects, you can run `da create --help`:
 
     $ da create --help
     usage:  create [-h] [--deps-only] {c,cpp,dap,java,nodejs,nulecule,perl,php,python,ruby} ...
