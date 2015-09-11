@@ -9,11 +9,41 @@ kickstarting the development with some concrete examples in various languages.
 Mind you that each language has different needs, so the assistants for Python
 look a little different than those for Perl.
 
-In these tutorials, we will use the command-line interface, but the usage of
-the GUI is identical. However, at the moment, we discourage using the GUI for
-these reasons.
 
-## Getting started with Flask
+## The Basics
+
+To launch DevAssistant, either run the `da` (or `da-gui`) binaries, or find
+DevAssistant in your Applications menu. In these tutorials, we will use the
+command-line `da` binary, but the usage of the GUI is very much the same.
+However, at the moment, we discourage using the GUI for these reasons.
+
+If you are unsure what assistant to run, you can use the `--help` or `-h` flag,
+like this, or use the bash completion with the `TAB` key. You can add `--help`
+at any time to see what assistants and options are available:
+
+    $ da --help
+    You can either run assistants with:
+    da [--debug] {create,tweak,prepare,extras} [ASSISTANT [ARGUMENTS]] ...
+
+    Where:
+    create   used for creating new projects
+    tweak    used for working with existing projects
+    prepare  used for preparing environment for upstream projects
+    extras   used for performing custom tasks not related to a specific project
+    You can shorten "create" to "crt", "tweak" to "twk" and "extras" to "extra".
+
+    Or you can run a custom action:
+    da [--debug] [ACTION] [ARGUMENTS]
+
+    Available actions:
+    doc      Display documentation for a DAP package.
+    help     Print detailed help.
+    pkg      Lets you interact with online DAPI service and your local DAP packages.
+    version  Print version
+
+
+
+## Getting Started with Flask
 
 Flask is a lightweight but robust Python web server, and it is perfect for
 creating a simple, mostly static home pages. If you want something bigger, you
@@ -22,7 +52,7 @@ can try Django—we have got an assistant for that too.
 Let us go through some steps to find out how you can create and customize the
 project:
 
-    da create python flask --help
+    $ da create python flask --help
 
 Running the above command gives you a message that looks like this:
 
@@ -50,17 +80,16 @@ Let us pretend you want to name your Flask app "MyFancyWebserver" and want to
 publish the sources on GitHub. As you can figure out from the help message
 above, you will have to run the following command:
 
-    da create python flask --name MyFancyWebserver --github UserName
+    $ da create python flask --name MyFancyWebserver --github UserName
 
 That is a bit long, is it not? You can write it in a much shorter way,
 especially if your GitHub username is the same as that on your local machine:
 
-    da crt python flask -n MyFancyWebserver -g
+    $ da crt python flask -n MyFancyWebserver -g
 
 When you run that, DevAssistant does all the magic for you—installs
 dependencies, creates files and directories and more:
 
-    [UserName@localhost]$ da crt python flask -n MyFancyWebserver -g
     INFO: Resolving RPM dependencies with DNF...
     Installing 2 RPM packages with DNF. Is this ok? [y(es)/n(o)/s(how)]: s
     python-flask-wtf-0.10.0-2.fc22.noarch
@@ -76,7 +105,6 @@ dependencies, creates files and directories and more:
     INFO: Flask project MyFancyWebserver in . has been created.
     INFO: To run the application use: ./manage.py runserver
     INFO: For more information about Flask project visit https://flask.pocoo.org/docs/tutorial/
-    [UserName@localhost]$ 
 
 As you can see, DevAssistant allows you to verify which packages are about to
 be installed.  During the run of the assistant, you may be asked for the
@@ -85,7 +113,7 @@ installation. After the run is finished, you can see that the directory
 `MyFancyWebserver` now exists, and that it is populated with files
 automatically:
 
-    [UserName@localhost]$ tree MyFancyWebserver
+    $ tree MyFancyWebserver
     MyFancyWebserver/
     ├── application
     ├── httpd.MyFancyWebserver.conf
@@ -102,4 +130,5 @@ automatically:
 
 You can then go to the directory and run `./manage.py runserver` as advised in
 the DevAssistant log. You now have a fully functioning webserver after running
-a single command in DevAssistant.
+a single command in DevAssistant, and can start editing it with your favourite
+editor.
