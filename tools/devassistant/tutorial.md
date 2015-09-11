@@ -72,7 +72,7 @@ assistants—Flask.
     subassistants:
       Following subassistants will help you with setting up your project.
 
-      {django,flask,gtk3,lib}
+    {django,flask,gtk3,lib}
 
 
 ## Getting Started with Flask
@@ -81,13 +81,10 @@ Flask is a lightweight but robust Python web server, and it is perfect for
 creating a simple, mostly static home pages. If you want something bigger, you
 can try Django—we have got an assistant for that too.
 
-Let us go through some steps to find out how you can create and customize the
-project:
+First, let us display the help message for Flask to find out how you can create
+and customize the project:
 
     $ da create python flask --help
-
-Running the above command gives you a message that looks like this:
-
     usage: create python flask [-h] [--venv] [-e [ECLIPSE]] [-g [GITHUB]] -n NAME [-r] [-v]
 
     Flask assistant will help you create a basic Flask project and install its
@@ -108,9 +105,9 @@ Running the above command gives you a message that looks like this:
                           for building RPM package.
     -v, --vim             Configure VIM editor for various programming languages
 
-Let us pretend you want to name your Flask app "MyFancyWebserver" and want to
-publish the sources on GitHub. As you can figure out from the help message
-above, you will have to run the following command:
+Say that you want to name your Flask app `MyFancyWebserver` and want to publish
+the source code on GitHub. As you can figure out from the help message above,
+you will have to run the following command:
 
     $ da create python flask --name MyFancyWebserver --github UserName
 
@@ -120,7 +117,7 @@ especially if your GitHub username is the same as that on your local machine:
     $ da crt python flask -n MyFancyWebserver -g
 
 When you run that, DevAssistant does all the magic for you—installs
-dependencies, creates files and directories and more:
+dependencies, creates files and directories, and more:
 
     INFO: Resolving RPM dependencies with DNF...
     Installing 2 RPM packages with DNF. Is this ok? [y(es)/n(o)/s(how)]: s
