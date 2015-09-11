@@ -1,14 +1,16 @@
 ---
-title: DevAssistant Tutorial
+title: DevAssistant Tutorials
 page: devassistant
 order: 1
 ---
 
-Assuming you have DevAssistant and the assistants installed, let us try out
-kickstarting the development with some concrete examples in various languages.
-Mind you that each language has different needs, so the assistants for Python
-look a little different than those for Perl.
-
+If you are running Fedora Workstation, we assume you already have DevAssistant
+and the assistants installed. If that is not the case, or you are unsure, check
+our Installation Guide. In the following tutorials, let us try out kickstarting
+the development with some concrete examples. Mind you that each language has
+different needs, so the assistants for Python look a little different than
+those for Perl. For the most part, however, the arguments like the name of the
+project or GitHub username are always the same.
 
 ## The Basics
 
@@ -161,3 +163,37 @@ You can then go to the directory and run `./manage.py runserver` as advised in
 the DevAssistant log. You now have a fully functioning webserver after running
 a single command in DevAssistant, and can start editing it with your favourite
 editor.
+
+## Publishing Existing Code to GitHub
+
+If you are interested in DevAssistant, there is a good chance you are already
+working on some code on your own, but that code is not yet published anywhere.
+We have thought of that, and DevAssistant provides a `tweak` assistant that
+does just that. Run it in your project's directory like this:
+
+    $ da tweak github create --push
+
+What this command does is create a repository for your GitHub username under
+the name of the current directory, and pushes the sources there. If you so
+wish, you can specify a different GitHub username or omit the `--push` flag to
+only create the repository, but not push into it.
+
+## Checking out or Forking a GitHub repository
+
+With DevAssistant, not only the creation of your own software is easy, but
+the modification of others' code is too. To check out a GitHub repository, run:
+
+    $ da prepare custom --repo UserName/RepoName
+
+The UserName and RepoName are GitHub identifiers of the repository, so to check
+out DevAssistant's own code, you would run `da prepare custom --repo
+devassistant/devassistant`. However, you could do it even more easily, because
+we provide our custom set of assistants, so `da prepare devassistant` is
+enough.
+
+An important part of the checkout process is looking for a `.devassistant`
+configuration file that the developer may have included in the repo, and
+installing dependencies or setting up your machine if you want that—It may be
+necessary to install some packages for testing etc. You are always asked if you
+want to execute the contents of the `.devassistant` file when checking out the
+repo for added security.
