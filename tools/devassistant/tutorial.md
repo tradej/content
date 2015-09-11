@@ -1,5 +1,5 @@
 ---
-title: DevAssistant Tutorials
+title: Tutorials
 page: devassistant
 order: 1
 ---

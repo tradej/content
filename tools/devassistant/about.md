@@ -1,25 +1,27 @@
 ---
-title: DevAssistant
+title: About DevAssistant
 page: devassistant
 section: tools
 description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in tristique felis. Duis ornare velit at libero sollicitudin congue. Mauris a pharetra augue. Ut vehicula sed neque sed congue. 
 ---
 
-# DevAssistant
+# What is DevAssistant
 
 DevAssistant is a tool that helps you start with developing software—for every
 project, you need dependencies, a certain file and directory structure, and
-often some services or the firewall set up. Instead of copying commands from
+often some services or the firewall set up. You no longer need to copy commands from
 lengthy tutorials online for each and every web app, library, or a tool you
-write or collaborate on, you only run one DevAssistant command and you are
-done. Imagine that running the following command in the command line:
+write. Now you only run one DevAssistant command and you are done. Imagine that
+running the following command in the command line:
 
     $ da create java maven --name MyJavaApp --github
 
 gets you a fully functioning Maven-based Java application with dependencies,
 metadata, and a fresh GitHub repository with the code already uploaded. The
-same can be said about mostly every major language because there is an
-assistant (a recipe) for that.
+same can be said about mostly every major language, because there is an
+assistant (a recipe) for that. Aside from the command-line version, you can
+also use the DevAssistant GUI, but for reasons explained [below](#GUI), we
+recommend you do not.
 
 # Installation
 
@@ -55,7 +57,7 @@ command line. If you get something like this:
 
 That means that you have DevAssistant on your machine, and you can skip the
 rest of this chapter and go to Tutorials. If not, you can get DevAssistant from
-GNOME Software, or by installing it through dnf:
+GNOME Software, or install it through DNF:
 
     $ sudo dnf install devassistant
 
@@ -70,19 +72,31 @@ channels. To get the third party assistants, run:
 
     $ da pkg install PackageName
 
-Where `PackageName` is the name of package you found on the web version of the
+Where `PackageName` is the name of package you got on the web version of the
 DAPI, or found by searching in the command line:
 
     $ da pkg search KeyWord
 
-Alternatively, you may list all the available packages:
+Alternatively, you may list all the available packages and choose from that:
 
     $ da pkg list --available
 
 Installing through `da pkg install` saves the assistants in a hidden folder
-inside your home directory, so they are not available to other users.
+(`.devassistant`) inside your home directory, so they are not available to
+other users.
 
 # Some Notes
+
+## Further Reading
+
+The tutorials and information found here are targeted mainly at beginners, so
+if you are interested in more in-depth reading, feel free to check out the
+following sites.
+
+* [DevAssistant Homepage](https://www.devassistant.org)
+* [DevAssistant User Documentation](http://doc.devassistant.org/en/latest/user_documentation.html)
+* [DevAssistant Blog](https://blog.devassistant.org)
+* [DevAssistant Developer Documentation](http://doc.devassistant.org/en/latest/developer_documentation.html)
 
 ## GUI
 
