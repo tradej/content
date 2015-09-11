@@ -61,7 +61,8 @@ To find more about creating projects, you can run `da create --help`:
 
 The above help message lists available assistants used for creating projects,
 so you can choose one to try out. For this tutorial, we will go with one of Python
-assistants—Flask.
+assistants—Flask. However, the same approach works for any assistant you
+choose.
 
     $ da create python --help
     usage: create python [-h] {django,flask,gtk3,lib} ...
