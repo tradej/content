@@ -41,6 +41,38 @@ at any time to see what assistants and options are available:
     pkg      Lets you interact with online DAPI service and your local DAP packages.
     version  Print version
 
+To find more about creating projects, you can run:
+
+    $ da create --help
+    usage:  create [-h] [--deps-only] {c,cpp,dap,java,nodejs,nulecule,perl,php,python,ruby} ...
+
+    Kickstart new projects easily with DevAssistant.
+
+    optional arguments:
+    -h, --help            show this help message and exit
+    --deps-only           Only install dependencies
+
+    subassistants:
+      Following subassistants will help you with setting up your project.
+
+      {c,cpp,dap,java,nodejs,nulecule,perl,php,python,ruby}
+
+The above help message lists available assistants used for creating projects,
+so you can choose one to try out. For this tutorial, we will go with one of Python
+assistants—Flask.
+
+    $ da create python --help
+    usage: create python [-h] {django,flask,gtk3,lib} ...
+
+    This is base Python assistant. You have to choose a specific project type.
+
+    optional arguments:
+    -h, --help            show this help message and exit
+
+    subassistants:
+      Following subassistants will help you with setting up your project.
+
+      {django,flask,gtk3,lib}
 
 
 ## Getting Started with Flask
