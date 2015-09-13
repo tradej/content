@@ -5,10 +5,10 @@ order: 2
 ---
 
 This section is intended for developers that want to make their own assistants
-or a custom `.devassistant` file for their project. If you want to learn how to
-use DevAssistant, go to [Tutorials](#LINK-TO-TUTORIALS). Furthermore, the
-tutorial is condensed to be as clear and short as possible. For a much more
-detailed tutorial, visit [DevAssistant
+for their project. If you want to learn how to use DevAssistant, go to
+[Tutorials](#LINK-TO-TUTORIALS). Furthermore, the tutorial is significantly
+condensed to be as clear and short as possible. For a much more detailed
+tutorial, visit [DevAssistant
 documentation](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant.html).
 
 # Write Your Own Assistant
@@ -16,7 +16,8 @@ documentation](http://doc.devassistant.org/en/latest/developer_documentation/cre
 If you contribute to a software project, especially one that many contributors
 work on, you can benefit greatly from having an assistant set suited precisely
 to your project. Likewise, if you like working with a language that is not yet
-covered by existing assistants, you can create a new set that does just that.
+covered by [existing assistants](https://dapi.devassistant.org/all/), you can
+create a new assistant package that does just that.
 
 While you can make your assitants without packaging and distributing them (more
 on that
@@ -36,7 +37,7 @@ DNF:
 
     $ sudo dnf install devassistant-dap-dap
 
-or install the DAP into DevAssistant's config directory:
+or install the DAP locally for your account only:
 
     $ da pkg install dap
 
@@ -44,14 +45,16 @@ or install the DAP into DevAssistant's config directory:
 
 With all the necessary bits and pieces in place, you can start with creating
 the package. Go to your working directory and create a new DAP with the desired
-assistants roles prepared (`create`, `tweak`, `prepare`, `extras`):
+[assistants roles](#about.md/##Assistants) prepared (any of`create`, `tweak`,
+`prepare`, `extras`):
 
     $ da create dap --name foo --crt --prep
 
 The above command creates a directory named `dap-foo` (`dap-` is added due to
-naming conventions), and in it a structure with assistants for the creation and
-preparation of projects, and directories for documentation, auxiliary files,
-and icons (useful for making your assistant accessible to GUI users):
+naming conventions), and in it a structure with assistants, in this case for
+the creation and preparation of projects. There are also directories for
+documentation, auxiliary files, and icons (useful for making your assistant
+accessible to GUI users).
 
     dap-foo/
     ├── assistants/
@@ -69,15 +72,23 @@ and icons (useful for making your assistant accessible to GUI users):
     └── meta.yaml
 
 The file `meta.yaml` contains metadata about the whole package, the author, and
-dependencies. It is important you fill it in properly because otherwise you
-will not be able to package it or publish it on the [DevAssistant Package Index
-(DAPI)](https://dapi.devassistant.org). Do not forget to include a licence of
-your choice too.
+dependencies. It is important you fill it in
+[properly](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant/packaging_and_distributing.html#meta-yaml-explained)
+because otherwise you will not be able to package it or publish it on the
+[DevAssistant Package Index (DAPI)](https://dapi.devassistant.org). Do not
+forget to include a licence of your choice too.
 
 ## Write a Sample Assistant
 
-An assistant is a YAML file with several sections that describe what it does.
-In this chapter, we will go through the typical ones.
+An assistant is a [YAML
+file](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant/yaml.html)
+with several sections that describe what it does.  In this chapter, we will go
+through the typical ones. The full description can be found in the
+[documentation](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant/yaml.html).
+If you do not like the idea of writing a YAML assistant, you can [use a
+language of your
+choice](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant/pingpong.html)
+for most parts of the assistant (so far only Python support is implemented).
 
 ### Header
 
@@ -91,9 +102,9 @@ right assistant for their use case.
 
 The dependencies section describes what packages should be installed by which
 package manager. There are many package managers supported, to name a few: Yum,
-DNF, gem, pip, pacman, and more. To indicate that RPM packages `baz` and `qux`,
-and a Python (pip) package 'foobar' should be installed, form the dependencies
-section the following way:
+DNF, gem, pip, pacman, and more. To indicate that e. g. RPM packages `baz` and
+`qux`, and a Python (pip) package `foobar` should be installed, form the
+dependencies section the following way:
 
     dependencies:
       - rpm: ['baz', 'qux']
@@ -101,9 +112,9 @@ section the following way:
 
 ### Arguments
 
-To customize the behaviour of the assistant, arguments are needed. Either you
-specify the argument properties yourself (in this case, a mandatory argument
-named `name` specified by flags `-n` and `--name`):
+To allow the user to provide input, arguments are needed. Either you specify
+the argument properties yourself (in this case, a mandatory argument named
+`name` specified by flags `-n` and `--name`):
 
     args:
       name:
@@ -111,8 +122,10 @@ named `name` specified by flags `-n` and `--name`):
         required: True
         help: A short description of the argument
 
-or you can use a definition from a so-called snippet (think of a header file or
-a library), in this case a snippet named `common_args`:
+or you can use a definition from a so-called
+[snippet](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant/yaml/snippets.html)
+(think of it a header file or a library), in this case a snippet named
+`common_args`:
 
     args:
       name:
@@ -130,26 +143,29 @@ this case, `$name`.
 You assistant may include other files than just the assistants, for example
 those that will be placed in the project's directory on creation. To include a
 file named `foo.txt`, copy it into the `files` subdirectory in the DAP's
-structure, and add it to the `files` section in the assistant under an
-appropriate handle, in this case e. g. `foo`:
+structure, and add a reference to it to the `files` section in the assistant
+under an appropriate handle, in this case e. g. `foo`:
 
     files:
       foo: &foo
         source: foo.txt
 
 Elsewhere in the assistant, the file will be only referred to by its handle
-`foo`. The syntax with `&` is necessary due to technical limitations of the
-current implementation.
+`foo`. Repeating the handle name with `&` is necessary due to technical
+limitations of the current implementation.
 
 ### Run Section
 
-Run section is a procedural section where you put the commands that should be
-executed during the assistant's run. Typically, you create a directory to put
-the project into, copy the files from the `files` section, start services,
-emit messages to be logged, or push the code to GitHub.
+The run section is a procedural section where you put the commands that should
+be executed during the assistant's run. Typically, you create a directory to
+put the project into, copy the files from the `files` section, start services,
+emit messages to be logged, or push the code to GitHub. For the full list of
+possible commands, have a look at [run section
+reference](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant/yaml/run_sections_reference.html).
 
-The run section consists of a list of commands, their arguments, and logic. To
-illustrate this better, let us have a look at this sample run section:
+The run section consists of a list of commands (each item of the list starting
+with `-`), their arguments, and other logic. To illustrate this better, let us
+have a look at this sample run section:
 
     run:
     - setup_project_dir:
@@ -166,30 +182,32 @@ illustrate this better, let us have a look at this sample run section:
 
 As fairly obvious, the command `setup_project_dir` creates the project dir from
 the variable `name`, as specified, and will fail if the directory already
-exists. In addition to that, it sets the variables `$contdir` (the directory
-one level above the project directory) and `$topdir` (the project directory),
-which will be used shortly.
+exists. What is not obvious is that in addition to that, it sets the variables
+`$contdir` (the directory one level above the project directory) and `$topdir`
+(the project directory), which will be used shortly.
 
 The next command, `cl: cd $contdir/$topdir`, executes a shell command that
 changes the current working directory to the project's directory. If you want
-to simply execute calls in the shell, call the `cl` (*c*ommand *l*ine) command.
+to simply execute calls in the shell, call the `cl` (*command line*) command.
 If you want to assign the result of the call to a variable or check the result
-in an `if` clause, use the `$(...)` syntax like in shell, as shown on the next
-line. The line in question, `$date~: $(date)`, is a variable assignment. In
-this case, it assigns the result of calling the shell command `date` into a
-variable named `$date`. The tilde (`~`) is there so that `$(date)` is
-interpreted. If it was not there, the assigned value would be the string
-`$(date)` itself. Generally speaking, all commands can be appended with the
-tilde to force interpreting the value on the right side of the colon.
+in an `if` clause, use the `$(...)` syntax like in shell instead, as shown on
+the next line. The line in question, `$date~: $(date)`, is a variable
+assignment. In this case, it assigns the result of calling the shell command
+`date` into a variable named `$date`. The tilde (`~`) is there so that
+`$(date)` is interpreted. If it was not there, the assigned value would be the
+string `$(date)` itself. Generally speaking, all commands can be appended with
+the tilde to force interpreting the value on the right side of the colon.
 
-The commands `log_i`, 'log_w`, and `log_e` are all used for logging on
+The commands `log_i`, `log_w`, and `log_e` are all used for logging on
 different levels (`INFO`, `WARNING`, `ERROR`). Unlike the first two, `log_e`
-also stops the execution of the assistant as it means fatal error.
+also stops the execution of the assistant as it means fatal error that
+DevAssistant can not recover from.
 
 The last thing not yet covered in this little example is the `if..else`
 construct. It works just how you expect it to, except not only can you query
 shell command results (`test -f foo.txt`) in the example, but also the values
-of variables (`if is_set $variable`) and more.
+of variables (`if defined $variable`, for example) and
+[more](http://doc.devassistant.org/en/latest/developer_documentation/command_reference.html).
 
 ### The whole assistant
 
@@ -243,11 +261,13 @@ the DAP meets all the requirements for distribution, run:
 
     $ da pkg lint ./dap-NAME-VERSION.dap
 
-After potential problems were sorted out, you can install the DAP by running
+The command outputs a list of problems that prevent the DAP from being used in
+distribution. After the problems are sorted out, you can install the DAP by
+running
 
     $ da pkg install ./dap-NAME-VERSION.dap
 
-or upload it to the [DAPI](https://dapi.devassistant.org) if you have an
-account, using the command:
+or upload it to the [DAPI](https://dapi.devassistant.org) for others to
+consume. Use the command:
 
     $ da extra dap upload -d ./dap-NAME-VERSION.dap
