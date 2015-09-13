@@ -25,6 +25,10 @@ same can be said about mostly every major language, because there is an
 assistant (a script) for that. Have a look at a few examples of how to run
 DevAssistant in the [tutorials](#tutorials.md).
 
+You can run DevAssistant from the command line, or you can use the graphical
+user interface (GUI). We strongly recommend using the command line interface
+for reasons described in the [notes](#notes.md).
+
 ## Installing DevAssistant on Fedora
 
 If you are running Fedora Workstation, there is a good chance that you already
@@ -58,6 +62,15 @@ If you do not see such a message, you can get DevAssistant from GNOME Software,
 or install it through DNF:
 
     $ sudo dnf install devassistant
+
+If that is not possible for whatever reason, you may install DevAssistant from
+[PyPI](https://pypi.python.org) using the command `pip3` from the package
+`python3-pip`:
+
+    $ pip3 install devassistant --user
+
+If you do this, however, you will not have any assistant available, and will
+have to [install them yourself](#about.md/##Installing New Assistants).
 
 ## Under the Hood
 
@@ -104,9 +117,9 @@ the assistants fall into:
 All roles have their shortened version (`crt`, `twk`, `prep`, `extra`) that can
 be used when invoking DevAssistant command-line interface.
 
-For quick illustration, If you want to create a brand new application based on
-Django (a Python web framework) which supports Docker containers, you need to
-run a command that looks like this (`da` is short for DevAssistant):
+For a quick illustration, If you want to create a brand new application based
+on Django (a Python web framework) which supports Docker containers, you need
+to run a command that looks like this (`da` is short for DevAssistant):
 
     da create python django --name MyAppName --docker
 
@@ -129,8 +142,9 @@ see the [page for developers](#developers.md).
 
 Getting DevAssistant the way described on the top of this page gets you also a
 common set of assistants for major languages. These assistants are packaged in
-Fedora, they get updates when the rest of the system is updated etc. You can,
-however, install third party assistants from the [DevAssistant Package Index
+Fedora under the names `devassistant-dap-NAME`, and they get updates when the
+rest of the system is updated etc. You can, however, install third party
+assistants from the [DevAssistant Package Index
 (DAPI)](https://dapi.devassistant.org) if they are not available through Fedora
 channels. To get the third party assistants, run:
 
