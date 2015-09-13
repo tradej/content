@@ -229,3 +229,25 @@ can be done with DevAssistant. To see the whole set of options and a more
 complicated example, visit the [Create Your Own
 Assistant](http://doc.devassistant.org/en/latest/developer_documentation/create_assistant.html)
 section of the DevAssistant Documentation.
+
+## Packaging
+
+When the assistants are created, you can prepare the whole package for
+distribution, which is done by executing:
+
+    $ da tweak dap pack
+
+in the source directory. This command creates a properly formatted DAP from the
+files present, and saves it under the name `dap-NAME-VERSION.dap`. To ensure
+the DAP meets all the requirements for distribution, run:
+
+    $ da pkg lint ./dap-NAME-VERSION.dap
+
+After potential problems were sorted out, you can install the DAP by running
+
+    $ da pkg install ./dap-NAME-VERSION.dap
+
+or upload it to the [DAPI](https://dapi.devassistant.org) if you have an
+account, using the command:
+
+    $ da extra dap upload -d ./dap-NAME-VERSION.dap
