@@ -10,7 +10,7 @@ guide](#about.md/##Installing DevAssistant on Fedora). Now, let us try out
 kickstarting the development with some concrete examples. Mind you that each
 language has different needs, so the assistants for Python look a little
 different than those for Perl. For the most part, however, the arguments like
-the name of the project or GitHub username are always the same.
+the name of the project or your GitHub username are always the same.
 
 ## The Basics
 
