@@ -69,7 +69,7 @@ If that is not possible for whatever reason, you may install DevAssistant from
 
     $ pip3 install devassistant --user
 
-If you do this, however, you will not have any assistant available, and will
+If you do this, however, you will not have any assistants available, and will
 have to [install them yourself](#about.md/##Installing New Assistants).
 
 ## Under the Hood
@@ -79,18 +79,9 @@ assistants, one for each workflow you need to cover—the assistants may be tied
 to programming languages (e. g. C, Java, Ruby, Python), or generic tasks like
 publishing your code to GitHub. There are a few assistants that are maintained
 by the DevAssistant upstream developers, and there are more that were created
-by the community. In Fedora, you will find mostly the first kind. Do not worry
-though, you can easily install community assistants too.
-
-To operate DevAssistant, you can choose from one of the user interfaces:
-Currently there is a command-line interface (it will be used throughout this
-documentation), and a graphical interface (GUI). Generally speaking, it does not
-matter which of them you choose, but at the moment, the DevAssistant developers
-have trouble finding time and people to develop and fix the GUI, so using the
-command-line interface should get you better and more consistent results.
-However, they are currently rewriting DevAssistant to a client-server
-architecture, and the existing GUI will soon be replaced by an interface that
-runs in your browser.
+by the community. In Fedora's repositories, you will find mostly the first
+kind, packaged under the names `devassistant-dap-NAME`). Do not worry though,
+you can easily install third party assistants too.
 
 ## Assistants
 
@@ -161,5 +152,7 @@ Alternatively, you may list all the available packages and choose from that:
 
 Installing through `da pkg install` saves the assistants in a hidden folder
 (`.devassistant`) inside your home directory, so they are not available to
-other users.
+other users. Update the assistants by running:
+
+    $ da pkg update
 
