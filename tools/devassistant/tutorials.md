@@ -95,7 +95,7 @@ can try Django—there is an assistant for that too.
 First, let us display the help message for Flask to find out how you can create
 and customize a Flask-based project:
 ```
-    $ da create python flask --help
+$ da create python flask --help
 ```
 
     usage: create python flask [-h] [--venv] [-e [ECLIPSE]] [-g [GITHUB]] -n NAME [-r] [-v]
