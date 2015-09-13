@@ -4,10 +4,10 @@ page: devassistant
 order: 1
 ---
 
-If you are running Fedora Workstation, we assume you already have DevAssistant
-and the assistants installed. If that is not the case, or you are unsure, check
-our Installation Guide. In the following tutorials, let us try out kickstarting
-the development with some concrete examples. Mind you that each language has
+For the tutorials presented here, we assume you already have DevAssistant
+installed. If you do not, or you are not sure, check out the [installation
+guide](#LINK-TO-INSTALLATION-GUIDE). Now, let us try out kickstarting the
+development with some concrete examples. Mind you that each language has
 different needs, so the assistants for Python look a little different than
 those for Perl. For the most part, however, the arguments like the name of the
 project or GitHub username are always the same.
@@ -17,13 +17,17 @@ project or GitHub username are always the same.
 To launch DevAssistant, either run the `da` (or `da-gui` for the GUI) binaries,
 or find DevAssistant in your Applications menu. In these tutorials, we will use
 the command-line `da` binary, but the usage of the GUI is very much the same.
-However, at the moment, we discourage using the GUI for these reasons.
+Check out the [notes](#LINK-TO-NOTES) for more information about the GUI.
 
-If you are unsure what assistant to run, you can use the `--help` or `-h` flag,
-like this, or use the bash completion with the `TAB` key. You can add `--help`
-at any time to see what assistants and options are available:
+If you are unsure what assistant to run, you can use the `--help` or `-h` flag:
 
     $ da --help
+
+On top of that, there is the bash completion, so you can autocomplete possible
+options by hitting the `TAB` key. You can add `--help` to any command to see
+what assistants and options are available. You will then receive a help message
+similar to this one:
+
     You can either run assistants with:
     da [--debug] {create,tweak,prepare,extras} [ASSISTANT [ARGUMENTS]] ...
 
@@ -45,7 +49,6 @@ at any time to see what assistants and options are available:
 
 To find more about creating projects, you can run `da create --help`:
 
-    $ da create --help
     usage:  create [-h] [--deps-only] {c,cpp,dap,java,nodejs,nulecule,perl,php,python,ruby} ...
 
     Kickstart new projects easily with DevAssistant.
@@ -65,6 +68,10 @@ assistants—Flask. However, the same approach works for any assistant you
 choose.
 
     $ da create python --help
+
+Running help at this point lists the available sub-assistants and arguments in
+a familiar help message:
+
     usage: create python [-h] {django,flask,gtk3,lib} ...
 
     This is base Python assistant. You have to choose a specific project type.
@@ -80,14 +87,17 @@ choose.
 
 ## Getting Started with Flask
 
-Flask is a lightweight but robust Python web server, and it is perfect for
+For simplicity, let us walk through setting up a project based on Flask. Flask
+is a lightweight but robust Python web framework, and it is perfect for
 creating a simple, mostly static home pages. If you want something bigger, you
-can try Django—we have got an assistant for that too.
+can try Django—there is an assistant for that too.
 
 First, let us display the help message for Flask to find out how you can create
-and customize the project:
-
+and customize a Flask-based project:
+```
     $ da create python flask --help
+```
+
     usage: create python flask [-h] [--venv] [-e [ECLIPSE]] [-g [GITHUB]] -n NAME [-r] [-v]
 
     Flask assistant will help you create a basic Flask project and install its
