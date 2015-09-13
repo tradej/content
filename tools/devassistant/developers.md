@@ -263,7 +263,7 @@ the DAP meets all the requirements for distribution, run:
 
 The command outputs a list of problems that prevent the DAP from being used in
 distribution. After the problems are sorted out, you can install the DAP by
-running
+running:
 
     $ da pkg install ./dap-NAME-VERSION.dap
 
