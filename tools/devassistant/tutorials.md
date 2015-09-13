@@ -6,18 +6,18 @@ order: 1
 
 For the tutorials presented here, we assume you already have DevAssistant
 installed. If you do not, or you are not sure, check out the [installation
-guide](#LINK-TO-INSTALLATION-GUIDE). Now, let us try out kickstarting the
-development with some concrete examples. Mind you that each language has
-different needs, so the assistants for Python look a little different than
-those for Perl. For the most part, however, the arguments like the name of the
-project or GitHub username are always the same.
+guide](#about.md/##Installing DevAssistant on Fedora). Now, let us try out
+kickstarting the development with some concrete examples. Mind you that each
+language has different needs, so the assistants for Python look a little
+different than those for Perl. For the most part, however, the arguments like
+the name of the project or GitHub username are always the same.
 
 ## The Basics
 
 To launch DevAssistant, either run the `da` (or `da-gui` for the GUI) binaries,
 or find DevAssistant in your Applications menu. In these tutorials, we will use
 the command-line `da` binary, but the usage of the GUI is very much the same.
-Check out the [notes](#LINK-TO-NOTES) for more information about the GUI.
+Check out the [notes](#notes.md) for more information about the GUI.
 
 If you are unsure what assistant to run, you can use the `--help` or `-h` flag:
 
@@ -187,7 +187,7 @@ does just that. Run it in your project's directory like this:
 What this command does is create a repository for your GitHub username under
 the name of the current directory, and pushes the sources there. If you so
 wish, you can specify a different GitHub username or omit the `--push` flag to
-only create the repository, but not push into it.
+only create the repository, but not push the code into it immediately.
 
 ## Checking out or Forking a GitHub repository
 

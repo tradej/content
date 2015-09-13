@@ -2,7 +2,7 @@
 title: About DevAssistant
 page: devassistant
 section: tools
-description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in tristique felis. Duis ornare velit at libero sollicitudin congue. Mauris a pharetra augue. Ut vehicula sed neque sed congue. 
+description: Basic information about DevAssistant
 ---
 
 # What is DevAssistant
@@ -22,7 +22,8 @@ line:
 gets you a fully functioning Maven-based Java application with dependencies,
 metadata, and a fresh GitHub repository with the code already uploaded. The
 same can be said about mostly every major language, because there is an
-assistant (a recipe) for that.
+assistant (a script) for that. Have a look at a few examples of how to run
+DevAssistant in the [tutorials](#tutorials.md).
 
 ## Installing DevAssistant on Fedora
 
@@ -89,7 +90,7 @@ the assistants fall into:
   start writing a completely new project, one that isn't existing yet.
 * **Tweak** current project – This sort of assistants are run on the code you
   are currently working, be it one that you created with DevAssistant, or
-  someone else's. In [Tutorials](#LINK-TO-TUTORIALS), there is a tutorial on
+  someone else's. In [Tutorials](#tutorials.md), there is a tutorial on
   how to publish your code to GitHub with a `tweak` assistant
 * **Prepare** someone's code – As opposed to `create` assistants, `prepare`
   assistants set up code of an existing project for you to contribute to.
@@ -117,7 +118,7 @@ along with the app:
 
 All you need is to point your browser to the address the assistant provided you
 with. If you want to go through a more detailed description of how to develop
-with DevAssistant, visit the [tutorials page](#LINK-TO-TUTORIALS).
+with DevAssistant, visit the [tutorials page](#tutorials.md).
 
 If you can not find an assistant on the [DevAssistant Package
 Index](https://dapi.devassistant.org) for a workflow you use often, or there is
